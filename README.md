@@ -17,7 +17,7 @@ A `Player` class that is a subclass of the Person class.
   - Attributes
     - `health`, defaults to 20
     - `strength`, defaults to 5
-    - `alive`, default is true. A player will be dead if there health reaches zero
+    - `alive`, default is true. A player will be dead if his/her health reaches zero
   - Methods
     - `take_damage(attack_strength)`: subtract the attack_strength from the recievers health.
     - `attack(player)`: call the player's take_damage method passing the attackers strength as an argument.
