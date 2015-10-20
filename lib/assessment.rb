@@ -1,20 +1,20 @@
 # Write your answer bellow
-
 class Person
   attr_accessor :first_name , :last_name, :full_name
-  def initialize (first_name, last_name, full_name)
+  def initialize (first_name, last_name)
     @first_name = first_name
     @last_name = last_name
-    @full_name = full_name
+    @full_name = @first_name + " " + @last_name
   end
 end
 
 class Player < Person
   attr_accessor :health , :strength, :alive
-  def initialize (health, strength, alive)
+  def initialize (first_name, last_name, health = 20, strength = 5, alive = true)
+    super(first_name, last_name)
     @health = health
     @strength = strength
-    @alive = true
+    @alive = alive
   end
 
   def take_damage(attack_strength)
@@ -31,22 +31,15 @@ class Player < Person
 end
 
 class Kinght < Player
-  def initialize
-    @health = 50
-    @strength = 7
-    @alive = true
+  def initialize(first_name, last_name, health=50 ,strength=7, alive=true)
+    super
   end
 end
 
 class Wizard < Player
-  def initialize
-    @health = 20
-    @strength = 75
-    @alive = true
+  attr_accessor :health, :strength, :alive
+  def initialize(first_name, last_name, health =20, strength=75, alive=true)
+      super
   end
 end
-
-w = Wizard.new
-k = Kinght.new
-k.attack(w)
 # Happy coding!!
