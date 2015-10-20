@@ -5,6 +5,11 @@
 class Person
   attr_accessor :first_name, :last_name
 
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
+  end
+
   def full_name
     "#{@first_name} #{@last_name}"
   end
@@ -18,7 +23,8 @@ end
 class Player < Person
   attr_accessor :health, :strength, :alive
 
-  def initialize(health=20, strength=2, alive=true)
+  def initialize(first_name, last_name, health=20, strength=2, alive=true)
+    super(first_name, last_name)
     @health   = health
     @strength = strength
     @alive    = alive
@@ -44,7 +50,8 @@ class Player < Person
 end
 
 class Knight < Player
-  def initialize(health=50, strength=7, alive=true)
+  def initialize(first_name, last_name, health=50, strength=7, alive=true)
+    super(first_name, last_name)
     @health   = health
     @strength = strength
     @alive    = alive
@@ -52,28 +59,30 @@ class Knight < Player
 end
 
 class Wizard < Player
-  def initialize(health=20, strength=75, alive=true)
+  def initialize(first_name, last_name, health=20, strength=75, alive=true)
+    super(first_name, last_name)
     @health   = health
     @strength = strength
     @alive    = alive
   end
 end
 
-harry = Knight.new
-harry.first_name = "Harry"
-harry.last_name  = "Chen"
-harry.info
+denis = Knight.new("Denis", "Cheung")
+# denis.first_name = "Denis"
+# denis.last_name  = "Cheung"
+denis.info
 
-fer   = Wizard.new
-fer.first_name = "Fer"
-fer.last_name  = "Martin"
+fer   = Wizard.new("Fer", "Martin")
+# fer.first_name = "Fer"
+# fer.last_name  = "Martin"
 fer.info
 
 puts
 puts "LET THE NERD BATTLE BEGIN"
 puts
-harry.attack(fer)
+
+denis.attack(fer)
 fer.info
 
-fer.attack(harry)
-harry.info
+fer.attack(denis)
+denis.info
