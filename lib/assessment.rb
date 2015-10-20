@@ -11,7 +11,8 @@ class Person
 end
 
 class Player < Person
-  def initialize(health=20,strength=5,alive=true)
+  def initialize(firstname,lastname,fullname,health=20,strength=5,alive=true)
+    super(firstname,lastname,fullname)
     @health = health
     @strength = strength
     @alive = alive
@@ -37,15 +38,16 @@ class Player < Person
 end
 
 class Knight < Player
-  def initialize(health=50,strength=7)
-    @health = health
-    @strength = strength
+    attr_accessor :health, :strength, :alive
+  def initialize(firstname,lastname,fullname,health=50,strength=7,alive=true)
+    super
   end
+
 end
 
 class Wizard < Player
-  def initialize(health=20,strength=75)
-    @health = health
-    @strength = strength
+  attr_accessor :health, :strength, :alive
+  def initialize(firstname,lastname,fullname,health,strength=75,alive)
+    super
   end
 end
